@@ -1,0 +1,14 @@
+table.table form {
+    display: inline-block;
+}
+button.btn-delete {
+    background: transparent;
+    color: #337ab7;
+    border: none;
+    padding: 0px;
+    outline: none !important;
+    box-shadow:none
+}
+.fa:hover {
+    text-decoration: none;
+}

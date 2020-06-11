@@ -17,6 +17,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'DashboardController@index')->name('admin');
+    Route::resource('/categories', 'CategoriesController');
+    Route::resource('/tags', 'BlogTagsController');
+    Route::resource('/users', 'UsersController');
+    Route::resource('/posts', 'BlogPostsController');
+    Route::resource('/posts', 'BlogPostsController');
+    Route::resource('/posts', 'BlogPostsController');
+});
+
+
+//index
+//create
+//update
+//edit
+//store
+//destroy
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

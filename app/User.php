@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
-    const NO_AVATAR = '/img/no-avatar.png';
+    const NO_AVATAR = '/img/no-avatar.jpg';
     const IS_ADMIN = 1;
     const IS_NOT_ADMIN = 0;
     const IS_BANNED = 1;
@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email',
     ];
 
     /**
@@ -75,6 +75,7 @@ class User extends Authenticatable
         $this->save();
     }
 
+
     public function remove()
     {
         try {
@@ -90,9 +91,11 @@ class User extends Authenticatable
         if ($image == null) {
             return;
         }
-        Storage::delete('uploads/' . $this->image);
+        if ($image != null) {
+            Storage::delete('uploads/' . $this->image);
+        }
         $filename = Str::random(10) . '.' . $image->extension();
-        $image->saveAs('uploads', $filename);
+        $image->storeAs('uploads', $filename);
         $this->image = $filename;
         $this->save();
     }
