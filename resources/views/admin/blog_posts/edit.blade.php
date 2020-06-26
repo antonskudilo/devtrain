@@ -34,7 +34,9 @@
                             <div class="form-group">
                                 <label>Категория</label>
                                 <div class="form-group">
-                                    {{ Form::select('blog_category_id', $categories, $post->category->id, ['class' => 'form-control select2', 'style' => "width: 100%"]) }}
+                                    {{ Form::select('blog_category_id', $categories,
+                                    $post->getCategoryId(),
+                                    ['class' => 'form-control select2', 'style' => "width: 100%"]) }}
                                 </div>
                             </div>
                             <div class="form-group">

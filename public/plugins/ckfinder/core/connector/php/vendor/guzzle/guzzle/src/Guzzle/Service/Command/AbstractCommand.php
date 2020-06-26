@@ -229,7 +229,7 @@ abstract class AbstractCommand extends Collection implements CommandInterface
                 $this[self::RESPONSE_PROCESSING] = self::TYPE_MODEL;
             }
 
-            // Notify subscribers of the client that the command is being prepared
+            // Notify blog_subscribers of the client that the command is being prepared
             $this->client->dispatch('command.before_prepare', array('command' => $this));
 
             // Fail on missing required arguments, and change parameters via filters

@@ -26,3 +26,20 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(\App\BlogPost::class, function (Faker $faker) {
+    return [
+        'title' => $faker->sentence,
+        'content' => $faker->sentence,
+        'image' => '4BiHgQyxyb.jpeg',
+//        'image' => $faker->image('http://lorempixel.com/', $width = 640, $height = 480),
+        'description' => $faker->sentence,
+        'date' => '2020-06-18',
+//        'tags' => [1, 2],
+        'views' => rand(100, 5000),
+        'blog_category_id' => 2,
+        'user_id' => 1,
+        'status' => 0,
+        'is_recommended' => 0
+    ];
+});

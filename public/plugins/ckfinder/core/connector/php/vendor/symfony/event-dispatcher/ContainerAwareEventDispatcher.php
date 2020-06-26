@@ -14,7 +14,7 @@ namespace Symfony\Component\EventDispatcher;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Lazily loads listeners and subscribers from the dependency injection
+ * Lazily loads listeners and blog_subscribers from the dependency injection
  * container.
  *
  * @author Fabien Potencier <fabien@symfony.com>
@@ -31,7 +31,7 @@ class ContainerAwareEventDispatcher extends EventDispatcher
     private $container;
 
     /**
-     * The service IDs of the event listeners and subscribers.
+     * The service IDs of the event listeners and blog_subscribers.
      *
      * @var array
      */

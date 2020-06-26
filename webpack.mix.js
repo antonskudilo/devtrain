@@ -11,8 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+// mix.js('resources/js/app.js', 'public/js')
+//     .sass('resources/sass/app.scss', 'public/css');
 
 //     resources/admin/
 
@@ -46,4 +46,34 @@ mix.scripts([
 
 mix.copyDirectory('resources/admin/assets/dist/fonts', 'public/fonts');
 
+//blog
+
+mix.styles([
+    'resources/blog/css/animate.min.css',
+    'resources/blog/css/bootstrap.min.css',
+    'resources/blog/css/font-awesome.min.css',
+    'resources/blog/css/owl.carousel.css',
+    'resources/blog/css/owl.theme.css',
+    'resources/blog/css/owl.transitions.css',
+    'resources/blog/css/responsive.css',
+    'resources/blog/css/style.css',
+], 'public/css/blog.css');
+
+mix.scripts([
+
+
+    'resources/blog/js/jquery-1.11.3.min.js',
+    'resources/blog/js/bootstrap.min.js',
+    'resources/blog/js/jquery.stickit.min.js',
+    // 'resources/blog/js/map.js',
+    'resources/blog/js/menu.js',
+    'resources/blog/js/owl.carousel.min.js',
+    'resources/blog/js/scripts.js',
+
+    // '/node_modules/jquery/dist/jquery.js',
+], 'public/js/blog.js');
+
+
+mix.copyDirectory('resources/blog/fonts', 'public/fonts');
+mix.copyDirectory('resources/blog/images', 'public/img');
 

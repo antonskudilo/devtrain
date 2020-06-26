@@ -15,7 +15,7 @@ use Monolog\Logger;
 use Monolog\Formatter\LineFormatter;
 
 /**
- * SwiftMailerHandler uses Swift_Mailer to send the emails
+ * SwiftMailerHandler uses Swift_Mailer to send the mail
  *
  * @author Gyula Sallai
  */

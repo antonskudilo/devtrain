@@ -15,7 +15,7 @@ use Monolog\Logger;
 use Monolog\Formatter\LineFormatter;
 
 /**
- * NativeMailerHandler uses the mail() function to send the emails
+ * NativeMailerHandler uses the mail() function to send the mail
  *
  * @author Christophe Coevoet <stof@notk.org>
  * @author Mark Garrett <mark@moderndeveloperllc.com>

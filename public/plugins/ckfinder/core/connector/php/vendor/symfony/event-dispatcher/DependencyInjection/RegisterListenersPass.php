@@ -39,7 +39,7 @@ class RegisterListenersPass implements CompilerPassInterface
      *
      * @param string $dispatcherService Service name of the event dispatcher in processed container
      * @param string $listenerTag       Tag name used for listener
-     * @param string $subscriberTag     Tag name used for subscribers
+     * @param string $subscriberTag     Tag name used for blog_subscribers
      */
     public function __construct($dispatcherService = 'event_dispatcher', $listenerTag = 'kernel.event_listener', $subscriberTag = 'kernel.event_subscriber')
     {
@@ -88,11 +88,11 @@ class RegisterListenersPass implements CompilerPassInterface
         foreach ($container->findTaggedServiceIds($this->subscriberTag) as $id => $attributes) {
             $def = $container->getDefinition($id);
             if (!$def->isPublic()) {
-                throw new \InvalidArgumentException(sprintf('The service "%s" must be public as event subscribers are lazy-loaded.', $id));
+                throw new \InvalidArgumentException(sprintf('The service "%s" must be public as event blog_subscribers are lazy-loaded.', $id));
             }
 
             if ($def->isAbstract()) {
-                throw new \InvalidArgumentException(sprintf('The service "%s" must not be abstract as event subscribers are lazy-loaded.', $id));
+                throw new \InvalidArgumentException(sprintf('The service "%s" must not be abstract as event blog_subscribers are lazy-loaded.', $id));
             }
 
             // We must assume that the class value has been correctly filled, even if the service is created by a factory

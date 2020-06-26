@@ -14,7 +14,7 @@ namespace Monolog\Handler;
 use Monolog\Logger;
 
 /**
- * MandrillHandler uses cURL to send the emails to the Mandrill API
+ * MandrillHandler uses cURL to send the mail to the Mandrill API
  *
  * @author Adam Nicholson <adamnicholson10@gmail.com>
  */

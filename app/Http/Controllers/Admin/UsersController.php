@@ -59,6 +59,7 @@ class UsersController extends Controller
         ]);
 
         $user->update($request->all());
+        $user->uploadAvatar($request->file('avatar'));
         return redirect()->route('users.index');
     }
 

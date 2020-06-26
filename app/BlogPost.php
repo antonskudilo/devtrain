@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -38,7 +39,12 @@ class BlogPost extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class, 'user_id');
+            return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function hasAuthor()
+    {
+        return ($this->author) ? true : false;
     }
 
     public function tags()
@@ -51,13 +57,18 @@ class BlogPost extends Model
         );
     }
 
+    public function comments()
+    {
+        return $this->hasMany(BlogComment::class, 'blog_post_id');
+    }
+
 //    methods
 
     public static function add($fields)
     {
         $post = new static;
         $post->fill($fields);
-        $post->user_id = 1;
+        $post->user_id = Auth::user()->id;
         $post->save();
 
         return $post;
@@ -160,12 +171,59 @@ class BlogPost extends Model
         return ($this->category) ? ($this->category->title) : self::NO_CATEGORY;
     }
 
+    public function getCategoryId()
+    {
+        return ($this->category != null) ? $this->category->id : null;
+    }
+
     public function getTags()
     {
         return (!$this->tags->isEmpty()) ? implode(', ', $this->tags->pluck('title')->all()) : self::NO_TAGS;
 
     }
 
+    public function getDate()
+    {
+//        2020-06-18
+        return Carbon::createFromFormat('Y-m-d', $this->date)->format('d.m.Y');
+    }
+
+    public function hasPrevious()
+    {
+        return self::where('id', '<', $this->id)->max('id');
+    }
+
+    public function getPrevious()
+    {
+        $postID = $this->hasPrevious();
+        return BlogPost::find($postID);
+    }
+
+    public function hasNext()
+    {
+        return self::where('id', '>', $this->id)->min('id');
+    }
+
+    public function getNext()
+    {
+        $postID = $this->hasNext();
+        return BlogPost::find($postID);
+    }
+
+    public function related()
+    {
+        return self::all()->except($this->id);
+    }
+
+    public function hasCategory()
+    {
+        return ($this->category) ? true : false;
+    }
+
+    public function getComments()
+    {
+        return $this->comments->where('status', 1);
+    }
 //    public function setDateAttribute($value)
 //    {
 //        $date = Carbon::createFromFormat('m/d/y', $value)->format('Y-m-d');

@@ -4,7 +4,7 @@
  * The Mail_Mime class is used to create MIME E-mail messages
  *
  * The Mail_Mime class provides an OO interface to create MIME
- * enabled email messages. This way you can create emails that
+ * enabled email messages. This way you can create mail that
  * contain plain-text bodies, HTML bodies, attachments, inline
  * images and specific headers.
  *
@@ -24,8 +24,8 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name of the authors, nor the names of its contributors 
- *   may be used to endorse or promote products derived from this 
+ * - Neither the name of the authors, nor the names of its contributors
+ *   may be used to endorse or promote products derived from this
  *   software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -65,7 +65,7 @@ require_once 'Mail/mimePart.php';
 
 /**
  * The Mail_Mime class provides an OO interface to create MIME
- * enabled email messages. This way you can create emails that
+ * enabled email messages. This way you can create mail that
  * contain plain-text bodies, HTML bodies, attachments, inline
  * images and specific headers.
  *
@@ -217,7 +217,7 @@ class Mail_mime
     /**
      * Accessor function to set the body text. Body text is used if
      * it's not an html mail being sent or else is used to fill the
-     * text/plain part that emails clients who don't support
+     * text/plain part that mail clients who don't support
      * html should show.
      *
      * @param string $data   Either a string or the file name with the contents

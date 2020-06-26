@@ -9,15 +9,14 @@ class BlogComment extends Model
     const IS_ALLOWED = 1;
     const IS_DISALLOWED = 0;
 
-
     public function author()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function post()
     {
-        return $this->hasOne(BlogPost::class);
+        return $this->belongsTo(BlogPost::class, 'blog_post_id');
     }
 
     public function allow()

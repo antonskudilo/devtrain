@@ -11,10 +11,14 @@ class BlogSubscription extends Model
     {
         $sub = new static();
         $sub->email = $email;
-        $sub->token = Str::random(100);
         $sub->save();
 
         return $sub;
+    }
+
+    public function generateToken()
+    {
+        $this->token = Str::random(100);
     }
 
     public function remove()
